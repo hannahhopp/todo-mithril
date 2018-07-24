@@ -27,6 +27,16 @@ const User = {
             User.current = result;
         })
         .catch((err) => console.log("uh oh"));
+    }, 
+
+    save : () => {
+        const { id } = User.current;
+        return m.request({
+            method : "PUT",
+            url : `https://rem-rest-api.herokuapp.com/api/users/${id}`,
+            data : User.current,
+            withCredentials : true,
+        });
     }
 }
 
