@@ -6,8 +6,11 @@ module.exports = {
 
     view    : function () {
         return m(".user-list", User.list.map((user) => {
-            const { firstName, lastName } = user;
-            return m(".user-list-item", `${firstName} ${lastName}`);
+            const { firstName, lastName, id } = user;
+            return m(".user-list-item", {
+                href : `/edit/${id}`,
+                oncreate : m.route.link
+            }, `${firstName} ${lastName}`);
         }));
     }
 }
